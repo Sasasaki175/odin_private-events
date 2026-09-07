@@ -1,5 +1,9 @@
 <h1>Events</h1>
 
+<div>
+  <%= link_to "Create new event", new_event_path %>
+</div>
+
 <div id="events">
   <% @events.each do |event| %>
     <%= render event %>
