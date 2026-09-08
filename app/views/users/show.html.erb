@@ -7,7 +7,19 @@
 </div>
 <h2>Attended events</h2>
 <div id="attended_events">
-  <% @user.attended_events.each do |event| %>
+  
+  <% upcoming_events, past_events = @user.attended_events.partition { |event| event.starts_on > Date.today } %>
+
+  <h3>Upcoming events</h3>
+
+  <% upcoming_events.each do |event| %>
+    <%= event.name %>
+    <br>
+  <% end %>
+
+  <h3>Past events</h3>
+
+  <% past_events.each do |event| %>
     <%= event.name %>
     <br>
   <% end %>
