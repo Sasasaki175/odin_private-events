@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   def show
-    @created_events = Event.where(creator: current_user)
+    set_user
+    @created_events = Event.where(creator: @user)
+  end
+
+  private
+
+  def set_user
+    @user = User.find(1)
   end
 end

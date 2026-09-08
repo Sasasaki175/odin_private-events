@@ -1,6 +1,11 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @event %>
+<h2>Attendees</h2>
+<% @event.attendees.each do |attendee| %>
+  <%= attendee.name %>
+  <br>
+<% end %>
 
 <div>
   <%= link_to "Back to events", events_path %>
