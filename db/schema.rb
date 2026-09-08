@@ -43,6 +43,6 @@ ActiveRecord::Schema[8.1].define(version: 2026_09_08_015425) do
   end
 
   add_foreign_key "events", "users", column: "creator_id"
-  add_foreign_key "signups", "event", column: "attended_event_id"
-  add_foreign_key "signups", "user", column: "attendee_id"
+  add_foreign_key "signups", "events", column: "attended_event_id"
+  add_foreign_key "signups", "users", column: "attendee_id"
 end

@@ -1,0 +1,5 @@
+<% if @user.attended_events.include?(event)%>
+  <p>Attended</p>
+<% else %>
+  <%= button_to "Attend event", signups_path(event), method: :post, params: { signup: { attendee_id: @user.id, attended_event_id: event.id } } %>
+<% end %>

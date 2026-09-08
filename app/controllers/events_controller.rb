@@ -1,9 +1,11 @@
 class EventsController < ApplicationController
   def index
+    set_user
     @events = Event.all
   end
 
   def show
+    set_user
     @event = Event.find(params.expect(:id))
   end
   def new
