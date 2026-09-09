@@ -1,11 +1,17 @@
 <h1>Events</h1>
 
 <div>
-  <%= link_to "Create new event", new_event_path %>
+  <%= link_to "Create new event", new_event_path if user_signed_in? %>
 </div>
 
 <div id="events">
-  <% @events.each do |event| %>
+  <h2>Upcoming events</h2>
+  <% @events.upcoming.each do |event| %>
+    <%= render event %>
+  <% end %>
+
+  <h2>Past events</h2>
+  <% @events.past.each do |event| %>
     <%= render event %>
   <% end %>
 </div>
