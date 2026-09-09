@@ -3,7 +3,7 @@
 <%= render @event %>
 <h2>Attendees</h2>
 <% @event.attendees.each do |attendee| %>
-  <%= attendee.name %>
+  <%= attendee.email %>
   <br>
 <% end %>
 

@@ -1,13 +1,19 @@
 class SignupsController < ApplicationController
   def create
     set_user
-    @signup = Signup.create(signup_params)
+    @signup = Signup.new(signup_params)
+
+    if @signup.save
+      redirect_to root_path, notice: "Attended event successfully."
+    else
+      render root_path, status: :unprocessable_entity
+    end
   end
 
   private
   
   def set_user
-    @user = User.find(1)
+    @user = current_user
   end
 
   def signup_params

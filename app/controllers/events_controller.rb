@@ -30,7 +30,7 @@ class EventsController < ApplicationController
   private
 
   def set_user
-    @user = User.find(1)
+    @user = current_user
   end
   def event_params
     params.expect(event: [ :name, :location, :starts_on ])

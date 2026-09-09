@@ -15,7 +15,11 @@
   </p>
 
   <p>
-    <%= render "signups/button", event: event %>
+    <% if user_signed_in? %>
+      <%= render "signups/button", event: event %>
+    <% else %>
+      <%= link_to "Log in", new_user_session_path %> to attend event
+    <% end %>
   </p>
 
 </div>
