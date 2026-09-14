@@ -7,11 +7,13 @@
 <div id="events">
   <h2>Upcoming events</h2>
   <% @events.upcoming.each do |event| %>
-    <%= render event %>
+    <%= link_to "#{event.name}", event %>
+    <br>
   <% end %>
 
   <h2>Past events</h2>
   <% @events.past.each do |event| %>
-    <%= render event %>
+    <%= link_to "#{event.name}", event %>
+    <br>
   <% end %>
 </div>

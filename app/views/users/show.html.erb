@@ -13,14 +13,14 @@
   <h3>Upcoming events</h3>
 
   <% upcoming_events.each do |event| %>
-    <%= event.name %>
+    <%= link_to "#{event.name}", event %>
     <br>
   <% end %>
 
   <h3>Past events</h3>
 
   <% past_events.each do |event| %>
-    <%= event.name %>
+    <%= link_to "#{event.name}", event %>
     <br>
   <% end %>
 </div>

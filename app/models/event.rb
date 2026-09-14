@@ -5,6 +5,5 @@ class Event < ApplicationRecord
   has_many :attendees, through: :signups, source: :attendee
 
   scope :upcoming, -> { where("starts_on > ?", Date.today) }
-
   scope :past, -> { where("starts_on <= ?", Date.today) }
 end
