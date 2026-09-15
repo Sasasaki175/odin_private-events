@@ -4,7 +4,7 @@ class SignupsController < ApplicationController
     @signup = Signup.new(signup_params)
 
     if @signup.save
-      redirect_to root_path, notice: "Attended event successfully."
+      redirect_to Event.find(@signup.attended_event_id), notice: "Attended event successfully."
     else
       render root_path, status: :unprocessable_entity
     end

@@ -1,9 +1,13 @@
-<h1><%= @event.name %></h1>
+<!-- Acts differently when the event_id param exists -->
+<h1><%= @event ? @event.name : "Users" %></h1>
 
 <div id="users">
   <% @users.each do |user| %>
-    <% if user != current_user %>
+    <% unless user == current_user && @event%>
       <%= link_to "#{user.email}", user %>
+    <% end %>
+
+    <% if user != current_user && @event %>
       <%= render "signups/button", event: @event, user: user %>
       <br>
     <% end %>
