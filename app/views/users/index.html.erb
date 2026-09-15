@@ -1,0 +1,11 @@
+<h1><%= @event.name %></h1>
+
+<div id="users">
+  <% @users.each do |user| %>
+    <% if user != current_user %>
+      <%= link_to "#{user.email}", user %>
+      <%= render "signups/button", event: @event, user: user %>
+      <br>
+    <% end %>
+  <% end %>
+</div>
