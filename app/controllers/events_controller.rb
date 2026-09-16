@@ -33,6 +33,6 @@ class EventsController < ApplicationController
     @user = current_user
   end
   def event_params
-    params.expect(event: [ :name, :location, :starts_on ])
+    params.expect(event: [ :name, :location, :starts_on, :private ])
   end
 end

@@ -7,8 +7,10 @@
 <div id="events">
   <h2>Upcoming events</h2>
   <% @events.upcoming.each do |event| %>
-    <%= link_to "#{event.name}", event %>
-    <br>
+    <% unless event.private %>
+      <%= link_to "#{event.name}", event %>
+      <br>
+    <% end %>
   <% end %>
 
   <h2>Past events</h2>
