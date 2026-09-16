@@ -16,9 +16,7 @@
 
   <p>
     <% if user_signed_in? %>
-      <% if event.creator.id == @user.id %>
-        <%= link_to "Invite attendees", users_path(event_id: event.id) %>
-      <% else %>
+      <% unless event.creator.id == @user.id %>
         <%= render "signups/button", event: event, user: @user %>
       <% end %>
     <% else %>
