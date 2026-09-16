@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_user
-  before_action :set_event, only: [:show, :destroy]
-  before_action :authorize_creator!, only: [:destroy]
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_creator!, only: [:edit, :destroy]
 
   def index
     @events = Event.all
@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def show
   end
+
   def new
     @event = Event.new
   end
@@ -24,6 +25,17 @@ class EventsController < ApplicationController
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @event.errors, status: :unprocessable_entity }
       end
+    end
+  end
+
+  def edit
+  end
+
+  def update
+    if @event.update(event_params)
+      redirect_to @event, notice: "Updated event."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 

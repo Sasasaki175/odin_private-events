@@ -2,6 +2,7 @@
 
 <%= render @event %>
 <% if @event.creator == @user %>
+  <%= link_to "Edit event", edit_event_path(@event) %>
   <%= link_to "Delete event", @event, data: { turbo_method: :delete, turbo_confirm: "Delete #{@event.name}?" } %>
 <% end %>
 <h2>Attendees</h2>
