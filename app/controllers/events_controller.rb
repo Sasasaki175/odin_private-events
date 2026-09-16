@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_user
-  before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_creator!, only: [:edit, :destroy]
+  before_action :set_event, only: [ :show, :edit, :update, :destroy ]
+  before_action :authorize_creator!, only: [ :edit, :destroy ]
 
   def index
     @events = Event.all
@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
   def create
     @event = @user.created_events.build(event_params)
-    
+
     respond_to do |format|
       if @event.save
         format.html { redirect_to @event, notice: "Event was successfully created." }
@@ -41,7 +41,7 @@ class EventsController < ApplicationController
 
   def destroy
     @event.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to events_path, notice: "Event was successfully deleted." }
       format.json { head :no_content }

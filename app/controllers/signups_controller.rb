@@ -1,6 +1,6 @@
 class SignupsController < ApplicationController
-  before_action :set_user, only: [:create]
-  before_action :authorize_creator!, only: [:destroy]
+  before_action :set_user, only: [ :create ]
+  before_action :authorize_creator!, only: [ :destroy ]
 
   def create
     @signup = Signup.new(signup_params)
@@ -23,7 +23,7 @@ class SignupsController < ApplicationController
   end
 
   private
-  
+
   def set_user
     @user = current_user
   end

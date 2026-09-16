@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show]
+  before_action :set_user, only: [ :show ]
 
-  def index 
+  def index
     @users = User.all
     @event = Event.find_by(id: params.expect(:event_id))
   end
