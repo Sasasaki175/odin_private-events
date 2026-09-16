@@ -1,5 +1,10 @@
 <% if user.attended_events.include?(event)%>
-  <p>Attended</p>
+  <% if user == current_user %>
+    <% signup = Signup.find_by(attendee_id: user.id, attended_event_id: event.id) %>
+    <%= button_to ("Stop attending event"), signup_path(signup), method: :delete, params: { signup: { attendee_id: user.id, attended_event_id: event.id } } %>
+  <% else %>
+    <p>Attended</p>
+  <% end %>
 <% else %>
-  <%= button_to (user == current_user ? "Attend event" : "Invite to event"), signups_path(event), method: :post, params: { signup: { attendee_id: user.id, attended_event_id: event.id } } %>
+  <%= button_to (user == current_user ? "Attend event" : "Invite to event"), signups_path, method: :post, params: { signup: { attendee_id: user.id, attended_event_id: event.id } } %>
 <% end %>

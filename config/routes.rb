@@ -6,5 +6,5 @@ Rails.application.routes.draw do
   
   resources :users, only: [ :index, :show ]
   resources :events
-  resources :signups, only: [ :create ]
+  resources :signups, only: [ :create, :destroy ]
 end
