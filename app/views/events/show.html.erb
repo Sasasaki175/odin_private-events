@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @event %>
+<% if @event.creator == @user %>
+  <%= link_to "Delete event", @event, data: { turbo_method: :delete, turbo_confirm: "Delete #{@event.name}?" } %>
+<% end %>
 <h2>Attendees</h2>
 <% @event.attendees.each do |attendee| %>
   <%= attendee.email %>
